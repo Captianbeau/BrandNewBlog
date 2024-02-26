@@ -1,4 +1,4 @@
-// post, put, delete
+// post
 const router = require('express').Router();
 const{User} = require('../../models');
 
