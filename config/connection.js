@@ -1,4 +1,5 @@
 //JAWSDB_URL is for Heroku
+
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
@@ -14,7 +15,7 @@ if(process.env.JAWSDB_URL){
         {
             host: process.env.DB_HOST,
             dialect:'mysql',
-            port: 3001
+            port: 3306
         }
     );
 }
