@@ -1,7 +1,8 @@
-//get(all&id), post, put, delete
+// post, put, delete
 const router = require('express').Router();
 const{User, Post, Comment} = require('../../models');
 
+//get all posts
 router.get('/', async (req,res) => {
     try{
         const postData = await Post.findAll({
@@ -13,6 +14,7 @@ router.get('/', async (req,res) => {
     }
 });
 
+//get post by id
 router.get('/:id', async (req, res) => {
     try{
     const postData = await Post.findByPk(req.params.id, {
@@ -27,3 +29,5 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
 }
 });
+
+module.exports = router;
