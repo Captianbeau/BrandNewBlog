@@ -1,6 +1,6 @@
 //TODO user_id and post_id
 const {Model, DataTypes} = require('sequelize');
-const sequelize = require('../config/');
+const sequelize = require('../config/connection');
 
 class Comment extends Model {};
 
