@@ -1,3 +1,4 @@
+//JAWSDB_URL is for Heroku
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
