@@ -1,4 +1,4 @@
-//get(all&id), post, put, delete
+// post, put, delete
 const router = require('express').Router();
 const{User, Post, Comment} = require('../../models');
 
@@ -29,3 +29,5 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
 }
 });
+
+module.exports = router;
