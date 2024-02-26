@@ -1,4 +1,10 @@
-//TODO user_id and post_id
+// {
+//     "id": "",
+//     "content": "",
+//     "user_id": "",
+//     "post_id": ""
+// }
+
 const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 

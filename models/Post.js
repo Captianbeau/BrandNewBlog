@@ -1,4 +1,10 @@
-//TODO user_id
+//  {
+//     "id": "",
+//     "title": "",
+//     "content":"",
+//     "user_id": ""
+// }
+
 const {Model,DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -23,13 +29,6 @@ Post.init(
             type:DataTypes.INTEGER,
             references:{
                 model:'user',
-                key:'id',
-            },
-        },
-        comment_id:{
-            type:DataTypes.INTEGER,
-            references:{
-                model:'comment',
                 key:'id',
             },
         },
