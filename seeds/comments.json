@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1",
+        "content": "umm you stole my username you should change it :/",
+        "user_id": "2",
+        "post_id": "1"
+    },
+    {
+        "id": "2",
+        "content": "alison smith: 4065 W 3500 S, Salt Lake City, UT 84120",
+        "user_id": "1",
+        "post_id": "2"
+    },
+    {
+        "id": "3",
+        "content": "wtf",
+        "user_id": "2",
+        "post_id": "2"
+    },
+    {
+        "id": "4",
+        "content": "you literally doxxed me >:(",
+        "user_id": "2",
+        "post_id": "3"
+    },
+    {
+        "id": "5",
+        "content": "what? you have no proof!",
+        "user_id": "1",
+        "post_id": "4"
+    },
+    {
+        "id": "6",
+        "content": "this is not an apology and you doxed me again!",
+        "user_id": "2",
+        "post_id": "5"
+    },
+    {
+        "id": "7",
+        "content": "lol",
+        "user_id": "1",
+        "post_id": "5"
+    }
+]
