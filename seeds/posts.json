@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "title": "My First Post",
+        "content":"Hi welcome to my blog I'm excited to use this as a personal journal. Im sure there will be nothing wrong with that.",
+        "user_id": "1"
+    },
+    {
+        "id": "2",
+        "title": "Problematic user captianbeau",
+        "content":"I have no relation to captianbeau they stole my username and I h8 them",
+        "user_id": "2"
+    },
+    {
+        "id": "3",
+        "title": "What have I done to deserve this",
+        "content":"bbeauu is soo mean to me and I just want to be friends :(",
+        "user_id": "1"
+    },
+    {
+        "id": "4",
+        "title": "captianbeau doxxed me!",
+        "content":"captianbeau has posted my real name and address online! they also told me I was ugly in dms",
+        "user_id": "2"
+    },
+    {
+        "id": "5",
+        "title": "An apology",
+        "content":"I would like to apolagixe to bbeauu (alison smith) for posting their address (4065 W 3500 S, Salt Lake City, UT 84120). I will not do it again.",
+        "user_id": "1"
+    }
+]
