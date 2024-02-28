@@ -1,2 +1,2 @@
-IF EXISTS DROP brandNewBlog_db;
-CREATE brandNewBlog_db;
+DROP DATABASE IF EXISTS brandNewBlog_db;
+CREATE DATABASE brandNewBlog_db;
