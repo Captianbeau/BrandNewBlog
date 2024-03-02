@@ -13,7 +13,12 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const sess = {
     secret: process.env.SECRET,
-    cookie:{},
+    cookie:{
+        maxAge: 40000,
+        httpOnly:true,
+        secure:false,
+        sameSite: 'strict',
+    },
     resave:false,
     saveUninitialized: true,
     store: new sequelizeStore({
@@ -24,10 +29,12 @@ const sess = {
 app.use(session(sess));
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+// app.use(express.urlencoded({extended:true}));
 
 app.use(routes);
 
 sequelize.sync({ force: false }).then(()=>{
     app.listen(PORT, ()=> console.log('ready'))
 });
+
+// app.listen(PORT, ()=> console.log('ready'))
