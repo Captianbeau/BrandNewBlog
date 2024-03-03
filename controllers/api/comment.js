@@ -1,82 +1,80 @@
 // put
 const router = require('express').Router();
-const{User, Post, Comment} = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 //get all comments
-router.get('/', async (req,res) => {
-    try{
+router.get('/', async (req, res) => {
+    try {
         const commentData = await Comment.findAll({
-            include:[{model: User}, {model: Post}],
+            include: [{ model: User }, { model: Post }],
         });
         res.status(200).json(commentData);
-    }catch(err){
+    } catch (err) {
         res.status(500).json(err);
     }
 });
 
 //get comment by id
 router.get('/:id', async (req, res) => {
-    try{
-    const commentData = await Comment.findByPk(req.params.id, {
-        include: [{model: User}, {model: Post}],
-    });
-    if(!commentData){
-        res.status(404).json({message:'Comment not found'});
-        return;
+    try {
+        const commentData = await Comment.findByPk(req.params.id, {
+            include: [{ model: User }, { model: Post }],
+        });
+        if (!commentData) {
+            res.status(404).json({ message: 'Comment not found' });
+            return;
+        }
+        res.status(200).json(commentData);
+    } catch (err) {
+        res.status(500).json(err);
     }
-    res.status(200).json(commentData);
-}catch(err){
-    res.status(500).json(err);
-}
 });
 
 //create comment
-router.post('/', async (req,res) => {
-    try{
+router.post('/', async (req, res) => {
+    try {
         const commentData = await Comment.create(req.body);
         res.status(200).json(commentData);
-    }catch(err){
+    } catch (err) {
         res.status(400).json(err);
     }
 });
 
 //update comment by id
-router.put('/:id', async (req,res) => {
-Comment.update(
-    {
-        title: req.body.title,
-        post_id: req.body.post_id,
-        user_id:req.user_id,
-    },
-    {
-        where:{
-            id:req.body.id,
+router.put('/:id', async (req, res) => {
+    Comment.update(
+        {
+            content: req.body.content,
         },
-    }
-)
-.then((updateComment) => {
-    res.json(updateComment);
-})
-.catch((err) => res.json(err));
+        {
+            where: {
+                id: req.body.id,
+            },
+        }
+    )
+        .then((updateComment) => {
+            res.json(updateComment);
+        })
+        .catch((err) => res.json(err));
 });
 
 //delete comment
-router.delete('/:id', async (req,res) => {
-try{
-    const commentData = await Comment.destroy({
-        where: {
-            id: req.params.id
-        }
-    });
+router.delete('/:id', async (req, res) => {
+    try {
+        const commentData = await Comment.destroy({
+            where: {
+                id: req.params.id
+            }
+        });
 
-    if (!commentData){
-        res.status(404).json({message: 'Comment Not found'});
-        return;
+        if (!commentData) {
+            res.status(404).json({ message: 'Comment Not found' });
+            return;
+        }
+        res.status(200).json(commentData);
+    } catch (err) {
+        res.status(500).json(err);
     }
-    res.status(200).json(commentData);
-}catch(err){
-    res.status(500).json(err);
-}
 });
 
 module.exports = router;
