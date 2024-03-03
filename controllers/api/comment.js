@@ -42,20 +42,21 @@ router.post('/', async (req, res) => {
 
 //update comment by id
 router.put('/:id', async (req, res) => {
-    Comment.update(
+    try{
+    const commentData = await Comment.update(
         {
             content: req.body.content,
         },
         {
             where: {
-                id: req.body.id,
+                id: req.params.body.id,
             },
         }
-    )
-        .then((updateComment) => {
-            res.json(updateComment);
-        })
-        .catch((err) => res.json(err));
+    );
+    return res.json(commentData)
+}catch(err){
+    res.json(err)
+};
 });
 
 //delete comment
