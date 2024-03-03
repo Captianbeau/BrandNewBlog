@@ -48,6 +48,27 @@ router.post('/', async (req,res) => {
     }
 });
 
+router.put('/:id', async (req, res) => {
+    try{
+    const postData = await Post.update(
+        {
+            title:req.body.title,
+            content: req.body.content,
+        },
+        {
+            where: {
+                id: req.params.id,
+            },
+        }
+    );
+    //check if we need the .save()
+    // await postData.save()
+    return res.json(postData)
+}catch(err){
+    res.json(err)
+};
+});
+
 //delete post
 router.delete('/:id', async (req,res) => {
     try{
