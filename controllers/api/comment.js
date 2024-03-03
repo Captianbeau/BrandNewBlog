@@ -49,10 +49,11 @@ router.put('/:id', async (req, res) => {
         },
         {
             where: {
-                id: req.params.body.id,
+                id: req.params.id,
             },
         }
     );
+    await commentData.save()
     return res.json(commentData)
 }catch(err){
     res.json(err)
