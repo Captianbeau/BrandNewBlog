@@ -40,9 +40,25 @@ router.post('/', async (req,res) => {
     }
 });
 
-// router.put('/:id', async (req,res) => {
-
-// });
+//update comment by id
+router.put('/:id', async (req,res) => {
+Comment.update(
+    {
+        title: req.body.title,
+        post_id: req.body.post_id,
+        user_id:req.user_id,
+    },
+    {
+        where:{
+            id:req.body.id,
+        },
+    }
+)
+.then((updateComment) => {
+    res.json(updateComment);
+})
+.catch((err) => res.json(err));
+});
 
 //delete comment
 router.delete('/:id', async (req,res) => {
