@@ -48,6 +48,7 @@ router.post('/', async (req,res) => {
     }
 });
 
+//update post by id
 router.put('/:id', async (req, res) => {
     try{
     const postData = await Post.update(
