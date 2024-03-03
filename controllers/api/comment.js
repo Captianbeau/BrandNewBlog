@@ -30,6 +30,7 @@ router.get('/:id', async (req, res) => {
 }
 });
 
+//create comment
 router.post('/', async (req,res) => {
     try{
         const commentData = await Comment.create(req.body);
@@ -43,8 +44,23 @@ router.post('/', async (req,res) => {
 
 // });
 
-// router.delete('/:id', async (req,res) => {
+//delete comment
+router.delete('/:id', async (req,res) => {
+try{
+    const commentData = await Comment.destroy({
+        where: {
+            id: req.params.id
+        }
+    });
 
-// });
+    if (!commentData){
+        res.status(404).json({message: 'Comment Not found'});
+        return;
+    }
+    res.status(200).json(commentData);
+}catch(err){
+    res.status(500).json(err);
+}
+});
 
 module.exports = router;
