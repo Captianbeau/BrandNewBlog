@@ -61,8 +61,6 @@ router.put('/:id', async (req, res) => {
             },
         }
     );
-    //check if we need the .save()
-    // await postData.save()
     return res.json(postData)
 }catch(err){
     res.json(err)

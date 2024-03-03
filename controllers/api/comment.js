@@ -53,8 +53,6 @@ router.put('/:id', async (req, res) => {
             },
         }
     );
-    //check if we need the .save()
-    await commentData.save()
     return res.json(commentData)
 }catch(err){
     res.json(err)
