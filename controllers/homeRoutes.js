@@ -34,9 +34,18 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/profile', async (req, res) => {
-    const title = '';
     try {
-        res.render('profile');
+
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] },
+            include: [{ model: Post }]
+        });
+
+        const user = userData.get({ plain: true });
+
+        res.render('profile', {
+            ...user,
+        });
     } catch (err) {
         res.status(500).json(err);
     }
