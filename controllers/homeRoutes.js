@@ -12,16 +12,20 @@ router.get('/', async (req, res) => {
                 {
                     model: User,
                     attributes: ['username']
+                },
+                {
+                    model: Comment,
                 }
-            ],
+            ]
         });
 
-        const posts = postData.map((post) => post.get({ plain: true }));
+        const posts = postData.map((post) => {
+            return post.get({ plain: true })
+        });
 
-        const title = 'Home';
-        
         res.render('homepage', {
-            title,
+            title: 'Home',
+            nav1: 'profile',
             posts
         });
     } catch (err) {
