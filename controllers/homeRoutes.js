@@ -1,24 +1,44 @@
 const router = require('express').Router();
+const { Post, Comment, User } = require('../models');
 
-router.get('/', async (req,res) => {
-    const title = 'Home';
-    try{
-        res.render('homepage');
-    }catch(err){
+
+router.get('/', async (req, res) => {
+
+    //get all posts
+
+    try {
+        const postData = await Post.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ],
+        });
+
+        const posts = postData.map((post) => post.get({ plain: true }));
+
+        const title = 'Home';
+        
+        res.render('homepage', {
+            title,
+            posts
+        });
+    } catch (err) {
         res.status(500).json(err);
     }
 });
 
-router.get('/profile', async (req,res) => {
+router.get('/profile', async (req, res) => {
     const title = '';
-    try{
+    try {
         res.render('profile');
-    }catch(err){
+    } catch (err) {
         res.status(500).json(err);
     }
 });
 
-router.get('/login', (req,res) => {
+router.get('/login', (req, res) => {
     const title = 'Login';
     res.render('login');
 });
