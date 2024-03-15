@@ -33,6 +33,36 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/post/:id', async (req,res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                },
+                {
+                    model: Comment,
+                },
+            ],
+        });
+        if (!postData) {
+            res.status(404).json({ message: 'Post not found' });
+            return;
+        }
+        const post = postData.get({plain:true});
+
+        res.render('post',{
+            title:'post',
+            nav1:'home',
+            nav2:'profile',
+           post
+        })
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
 router.get('/profile', async (req, res) => {
     try {
 
